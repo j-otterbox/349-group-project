@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Food Fights</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
+
+  <!-- Custom fonts for this template -->
+  <!--<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+  <!--<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/clean-blog.css') }}">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img src="../static/imgs/website-logo.png" alt="Food Fights Logo">
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <!--<li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>-->
+          <!--<li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="post.html">Sample Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" id="loginBtn" href="" data-toggle="modal" data-target="#exampleModal" >Login</a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="btn btn-outline-light dropdown-toggle" type="button" id="profileBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                username
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#"></a>
+                <a id="signOutBtn" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Sign Out</a>
+                <!--<a class="dropdown-item" href="#">Something else here</a>-->
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('../static/imgs/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Food Fights</h1>
+            <span class="subheading">Only the best!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!--<div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h2>Recent Posts</h2>
+        <div class="post-preview">
+          !--<a href="">--
+            <h2 class="post-title">
+              Tasty ribs I made the other day...
+            </h2>
+            <div style="width: 100%; padding-top: 100%; position: relative; background-color: gray;">
+            </div>
+            <h3 class="post-subtitle">
+              Problems look mighty small from 150 miles up
+            </h3>
+          !--</a>--
+          <p class="post-meta">Posted by
+            <a href="#">Start Bootstrap</a>
+            on September 24, 2019</p>
+        </div>
+        <hr>
+        <hr>
+        !-- Pager --
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
+    </div>-->
+
+    <!-- Post thumbnails go here -->
+    <div class="posts-header" style="display: flex; justify-content: center;">
+      <div class="posts-header-content">
+        <h2>Recent Posts</h2>
+        <button id="createPostBtn" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Create New Post</button>
+      </div>
+      
+    </div>
+    <div class="row">
+      <!-- Portfolio Item 1-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+          </div>
+          <img class="img-fluid" src="../static/imgs/portfolio/cabin.png" alt="" />
+          <div class="overlay">
+            <!--<div class="text">test</div>-->
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 2-->
+      <div class="col-md-6 col-lg-4 mb-5">
+          <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="../static/imgs/portfolio/cake.png" alt="" />
+              <div class="overlay">
+                <!--<div class="text">test</div>-->
+              </div>
+          </div>
+      </div>
+      <!-- Portfolio Item 3-->
+      <div class="col-md-6 col-lg-4 mb-5">
+          <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="../static/imgs/portfolio/circus.png" alt="" />
+              <div class="overlay">
+                <!--<div class="text">test</div>-->
+              </div>
+          </div>
+      </div>
+      <!-- Portfolio Item 4-->
+      <div class="col-md-6 col-lg-4 mb-5">
+          <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="../static/imgs/portfolio/game.png" alt="" />
+              <div class="overlay">
+        
+              </div>
+          </div>
+      </div>
+      <!-- Portfolio Item 5-->
+      <div class="col-md-6 col-lg-4 mb-5">
+          <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="../static/imgs/portfolio/safe.png" alt="" />
+              <div class="overlay">
+        
+              </div>
+          </div>
+      </div>
+      <!-- Portfolio Item 6-->
+      <div class="col-md-6 col-lg-4 mb-5">
+          <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="../static/imgs/portfolio/submarine.png" alt="" />
+              <div class="overlay">
+        
+              </div>
+          </div>
+      </div>
+      <!-- Portfolio Item 7-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+          </div>
+          <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-1.jpeg" alt="" />
+          <div class="overlay">
+        
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 8-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-1.jpeg" alt="" />
+            <div class="overlay">
+        
+            </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 9-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-3.jpeg" alt="" />
+            <div class="overlay">
+        
+            </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 10-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+          </div>
+          <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-1.jpeg" alt="" />
+          <div class="overlay">
+        
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 11-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-1.jpeg" alt="" />
+            <div class="overlay">
+        
+            </div>
+        </div>
+      </div>
+      <!-- Portfolio Item 12-->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <img class="img-fluid" src="../static/imgs/portfolio/s3-test-img-3.jpeg" alt="" />
+            <div class="overlay">
+        
+            </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Load More Posts</button>
+  </div>
+  
+
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Notorious PHP</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modalTitle">Modal Template</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <!-- Templates go here -->
+            <h3>Test Content</h3>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- Modal End -->
+
+  <!-- Login Form Template -->
+  <template id="loginForm">
+    <form class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="inputUsername" aria-describedby="emailHelp" placeholder="Email Address" name="username" required>
+            <div class="invalid-feedback">
+                Incorrect or invalid username (email).
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="inputPassword" pattern=".+" placeholder="Password" name="password" required>
+            <div class="invalid-feedback">
+                Please enter your password.
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="alert alert-danger login-alert" role="alert">
+                Username or password was incorrect.
+            </div>
+            <button type="submit" class="btn btn-primary signin-btn">Sign In</button>
+        </div>           
+    </form>
+    <p>Don't have an account? <a class="register-btn" href="#">Register Here</a></p>
+  </template>
+  <!-- Login Form Template End -->
+
+  <!-- Register Form Template -->
+  <template id="registerForm">
+    <form class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" class="form-control" id="emailRegisterInput" placeholder="Email" pattern=".*" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Invalid email format.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" class="form-control" id="registerPasswordInput" placeholder="Password" pattern="(?=.*\W)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Invalid password. Password must contain:
+                <ul style="list-style-type:none;">
+                    <li>-> 1 Uppercase Character</li>
+                    <li>-> 1 Lowercase Character</li>
+                    <li>-> 1 Digit</li>
+                    <li>-> 1 Special Character</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Passwords do not match.
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="registerBtn" class="btn btn-primary">Submit</button>
+        </div>
+    </form>   
+  </template>
+  <!-- Register Form Template End -->
+
+  <!-- Create Post Template -->
+  <template id="createPostForm">
+    <form class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="postTitleInput">Post Title</label>
+        <input type="text" class="form-control" id="postTitleInput" placeholder="Post Title">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">File input</label>
+        <input type="file" class="form-control-file" id="fileInput">
+      </div>
+      <div class="form-group">
+        <label for="postCaptionInput">Post Caption</label>
+        <textarea class="form-control" id="postCaptionInput" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="createPostAuthorInput">Author</label>
+        <input id="createPostAuthorInput" class="form-control" type="text" placeholder="" readonly>
+      </div>
+    </form>
+  </template>
+  <!-- Create Post Template End -->
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <!--<script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>-->
+
+
+  <!-- AWS Cognito -->
+  <script src="../static/js/amazon-cognito-auth.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+  <script src="../static/js/amazon-cognito-identity.min.js"></script>
+  <script src="../static/js/config.js"></script>
+
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Third party plugin JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <!--<script src="js/clean-blog.min.js"></script>-->
+  <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
