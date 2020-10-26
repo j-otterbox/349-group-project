@@ -5,7 +5,93 @@ var modalBody = document.getElementsByClassName("modal-body")[0];
 var modalTitle = document.getElementById('modalTitle');
 var signOutBtn = document.getElementById('signOutBtn');
 var profileBtn = document.getElementById('profileBtn');
+// non-login related things
 var createPostBtn = document.getElementById('createPostBtn');
+var posts = document.getElementsByClassName('post-preview');
+var postDeetsModalImg = document.getElementById('postDetailsModalImg');
+var postsModalTitle = document.getElementById('postsModalTitle');
+
+
+
+dummyPostData = [
+  {
+    postTitle: "Who doesn't love ribs!?",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/beef-ribs.jpg",
+    postCaption: "Honestly my ribs are the best. If you think you can do better, you can't"
+  },
+  {
+    postTitle: "Simple but egg-celent...",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/egg-on-toast.jpg",
+    postCaption: "I love bread, and I love eggs. Simple but tasty breakfast!"
+  },
+  {
+    postTitle: "Breakfast: hands down the best meal of the day.",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/french-toast.jpg",
+    postCaption: "French toast is a classic that is so tasty! Yum!"
+  },
+  {
+    postTitle: "Homemade Pizza...",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/pizza.jpg",
+    postCaption: "Just kidding I didn't make this, I suck at cooking"
+  },
+  {
+    postTitle: "Tacos!? Yes Please!",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/tacos.jpg",
+    postCaption: "Nothing hits the spot quite like street tacos."
+  },
+  {
+    postTitle: "Classic Burger and Fries",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/burger-and-fries.jpg",
+    postCaption: "Nothing beats a burger and fries after a day at the beach!"
+  },
+  {
+    postTitle: "English Breakfast",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/english-breakfast.jpg",
+    postCaption: "Now this is one hearty meal, and it tastes as good as it looks!"
+  },
+  {
+    postTitle: "Cheese? Yes, Please!",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/cheese-and-crackers.jpg",
+    postCaption: "I love cheese, and wine, cause I'm extra and I know it."
+  },
+  {
+    postTitle: "Meatballs...",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/meatballs.jpg",
+    postCaption: "Who knew little spheres of meat could be so tasty?"
+  },
+  {
+    postTitle: "I have no idea what this is",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/seafood.jpg",
+    postCaption: "Honestly, it's anyones guess, I thought it was shrimp, maybe chicken?"
+  },
+  {
+    postTitle: "I love pies.",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/pie.jpg",
+    postCaption: "However, my body disagrees. Maybe I'm allergic to something?"
+  },
+  {
+    postTitle: "A little love for the veggies...",
+    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/big-salad.jpg",
+    postCaption: "Just kidding, vegetables are awful and should be hunted down and destroyed."
+  },
+]
+
+
+for (var post of posts) {
+
+  post.addEventListener('click', function() {
+    
+    postPreviewImg = this.querySelector(".post-preview-img");
+    
+    postDeetsModalImg.setAttribute('src', postPreviewImg.src);
+    // get the index of the chosen item
+    index = $(this).parent().index();
+
+
+    postsModalTitle.innerText = dummyPostData[index].postTitle;
+
+  });
+}
 
 
 // =================================================== //
@@ -15,7 +101,6 @@ var data = {
   UserPoolId : _config.cognito.userPoolId,
   ClientId : _config.cognito.clientId
 };
-
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
 var cognitoUser = userPool.getCurrentUser();
