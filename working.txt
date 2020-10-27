@@ -1,0 +1,10 @@
+*getting 5 most comments when p_id =1*
+http://127.0.0.1:5000/comments/1/top/5
+
+*getting post when id=1*
+http://127.0.0.1:5000/posts/get_post?post_id=1
+
+
+
+http://127.0.0.1:5000/post/add_post?post_id=100?post_title=Hello%20from%20web?post_text=Hey%20There?post_community=Italian?post_url=somewhere.com?post_user_name=jazesq?post_date=0/0/0
+
