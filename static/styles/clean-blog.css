@@ -49,6 +49,32 @@ blockquote {
   margin-top: 60px;
 }
 
+/* =================== */
+/* == CUSTOM STYLES == */
+
+
+.reply-btn, .reply-form-btns-container button {
+  padding: 5px 10px !important;
+}
+
+.comments-header {
+  text-align: center;
+}
+
+.comment-validation {
+  display: none;
+}
+
+.modal-header-container {
+  width: 100%;
+}
+
+#postsModalTitle, #postsModalCaption, #postsModalAuthor {
+  text-align: center;
+}
+
+/* =================== */
+
 .caption {
   font-size: 14px;
   font-style: italic;
@@ -134,7 +160,7 @@ img::-moz-selection {
 }
 
 .post-preview:hover .overlay {
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
 .text {
@@ -237,7 +263,7 @@ header.masthead .overlay {
   height: 100%;
   width: 100%;
   background-color: #212529;
-  opacity: 0.5;
+  opacity: 0.65;
 }
 
 header.masthead .page-heading,

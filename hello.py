@@ -15,8 +15,8 @@ def hello_world():
   s3 = boto3.resource('s3')
 
   # Upload a new file
-  data = open('.\static\imgs\portfolio\s3-test-img-1.jpeg', 'rb')
-  s3.Bucket('349-food-fights').put_object(Key='chicken-pot-pie.jpg', Body=data)
+  #data = open('.\static\imgs\portfolio\s3-test-img-1.jpeg', 'rb')
+  #s3.Bucket('349-food-fights').put_object(Key='chicken-pot-pie.jpg', Body=data)
 
   return render_template('index.html', name='home')
 
