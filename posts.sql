@@ -42,16 +42,16 @@ INSERT INTO posts (post_id,post_title,post_text,post_community,post_url,post_use
 
 
 
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment 1', 'Comment text 1', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment 2', 'Comment text 2', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment 3', 'Comment text 3', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment 4', 'Comment text 4', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment 5', 'Comment text 5', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment 1', 'Comment text 1', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment 2', 'Comment text 2', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment 3', 'Comment text 3', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment 4', 'Comment text 4', '10/5/2020');
-INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment 5', 'Comment text 5', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment text 1', 'User1', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment text 2', 'User2', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment text 3', 'User3', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment text 4', 'User4', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(1,'Comment text 5', 'User5', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment text 1', 'User1', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment text 2', 'User2', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment text 3', 'User3', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment text 4', 'User4', '10/5/2020');
+INSERT INTO comments(p_id,comment_text, comment_user_name, comment_date) VALUES(2,'Comment text 5', 'User5', '10/5/2020');
 
 
 COMMIT;

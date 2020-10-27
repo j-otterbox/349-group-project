@@ -2,7 +2,7 @@ import boto3
 import botocore
 import logging
 import sqlite3
-from flask import Flask, jsonify, render_template, g, request
+from flask import Flask, jsonify, render_template, g, request, redirect
 
 app = Flask(__name__)
 app.config.from_envvar('APP_CONFIG')
@@ -15,46 +15,18 @@ def hello_world():
 
   # Let's use Amazon S3
   s3 = boto3.resource('s3',
-         aws_access_key_id='',
-         aws_secret_access_key= '')
-
-  buckets = []
-
-  # Print out bucket names
-  for bucket in s3.buckets.all():
-    buckets.append(bucket.name)
-
-  #Upload a new file
-  #data = open('s3-test-img-1.jpeg', 'rb')
-  #s3.Bucket('349-food-fights').put_object(Key='s3-test-img-2.jpeg', Body=data)
-
-  app.logger.info(buckets)
-
+         aws_access_key_id='AKIA274WOECWYA2IANEC',
+         aws_secret_access_key= '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')
 
   all_posts = query_db('SELECT * FROM posts;')
   all_comments= query_db('SELECT * FROM comments;')
-  return render_template('index.html', name='home',post=jsonify(all_posts),comments=jsonify(all_comments))
 
-@app.route('/post')
-def samplePost():
-  return render_template('post.html', name='post')
+  return render_template('index.html', name='home', p=all_posts,c=all_comments)
 
-
-@app.route('/photos/grilled_cheese')
-def getGrilledCheese():
-
-  s3 = boto3.resource('s3')
-  KEY = 'test_album/s3-test-img-3.jpeg'
-
-  try:
-    s3.Bucket('349-food-fights').download_file(KEY, 'grilled_cheese.jpg')
-  except botocore.exceptions.ClientError as e:
-    if e.response['Error']['Code'] == "404":
-        print("The object does not exist.")
-    else:
-        raise
-
-  return 'did it work?'
+@app.route('/fetch-test', methods=['GET'])
+def createNewPost():
+  message = {'greeting':'hello from the fetch-test endpoint!'}
+  return jsonify(message)  # serialize and use JSON headers
 
 # -------------------------------------------------------
 
@@ -132,7 +104,6 @@ def init_db():
 @app.route('/posts/add_post', methods=['GET', 'POST'])
 def add_post():
 	if request.method == 'POST':
-	
 		post_id = request.form['post_id']
 		post_title = request.form['post_title']
 		post_text = request.form['post_text']
@@ -140,13 +111,10 @@ def add_post():
 		post_url = request.form['post_url']
 		post_user_name = request.form['post_user_name']
 		post_date = request.form['post_date']
-		
 		# checks to see if post with this ID already exists
 		query= "SELECT post_title FROM posts WHERE post_id =?;"
 		check = query_db(query, (post_id,))
 		if check == []:
-			
-	
 			# add input to list
 			input_args = []
 			input_args.append(post_id)
@@ -157,15 +125,12 @@ def add_post():
 			input_args.append(post_user_name)
 			input_args.append(post_date)
 			
-			
 			query= "INSERT INTO posts(post_id, post_title, post_text, post_community, post_url, post_user_name, post_date) VALUES(?,?,?,?,?,?,?);"
 			conn = sqlite3.connect(DATABASE)
 			conn.execute(query, input_args)
 			conn.commit()
 			conn.close()
-		
 		else: return conflict_409()
-		
 		# message for successful post upload
 		message = {
 			'Post ID: ' : post_id,
@@ -176,10 +141,8 @@ def add_post():
 			'Post User Name: ': post_user_name,
 			'Post Date': post_date
 		}
-		
-
-		return send_ok200(message)
-
+		# return send_ok200(message)
+		return redirect('/')
 
 # get post by id
 @app.route('/posts/get_post', methods=['GET'])
@@ -192,13 +155,9 @@ def get_post():
 			return page_not_found(404)
 	return send_ok200(get_post)
 
-
-
-
 @app.route('/comments/<int:p_id>/top/<int:max>', methods=['GET', 'POST'])
 def get_top(p_id,max):
 	gc = query_db('SELECT * FROM comments WHERE p_id = ? ORDER BY comment_date DESC LIMIT ?;', (p_id,max))
-
 	if gc == []:
 		return page_not_found(404)
 	return send_ok200(gc)
@@ -240,15 +199,12 @@ def add_comment():
 		query= "SELECT comment_user_name FROM comments WHERE p_id =?;"
 		check = query_db(query, (post_id,))
 		if check == []:
-			
-	
 			# add input to list
 			input_args = []
 			input_args.append(p_id)
 			input_args.append(comment_text)
 			input_args.append(comment_user_name)
 			input_args.append(comment_date)
-			
 			
 			query= "INSERT INTO comments(p_id, comment_text, comment_user_name, comment_date) VALUES(?,?,?,?);"
 			conn = sqlite3.connect(DATABASE)
@@ -266,6 +222,12 @@ def add_comment():
 			'Comment User Name: ': comment_user_name,
 			'Comment Date': comment_date
 		}
-		
-
 		return send_ok200(message)
+
+# returns all posts in database
+@app.route('/posts/all', methods=['GET'])
+def app_all():
+	all_posts = query_db('SELECT * FROM posts;')
+	return send_ok200(all_posts)
+	if get_post == []:
+			return page_not_found(404)

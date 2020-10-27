@@ -6,3 +6,5 @@ http://127.0.0.1:5000/posts/get_post?post_id=1
 
 
 
+http://127.0.0.1:5000/post/add_post?post_id=100?post_title=Hello%20from%20web?post_text=Hey%20There?post_community=Italian?post_url=somewhere.com?post_user_name=jazesq?post_date=0/0/0
+

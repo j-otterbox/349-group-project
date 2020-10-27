@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Food Fights</title>
+  <title>Food Fights!</title>
 
   <!-- Bootstrap core CSS -->
   <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -51,7 +51,7 @@
             <a class="nav-link" href="contact.html">Contact</a>
           </li>-->
           <li class="nav-item">
-            <a class="nav-link" id="loginBtn" href="" data-toggle="modal" data-target="#exampleModal" >Login</a>
+            <a class="nav-link" id="loginBtn" href="" data-toggle="modal" data-target="#exampleModal">Login</a>
           </li>
           <li>
             <div class="dropdown">
@@ -77,8 +77,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Food Fights</h1>
-            <span class="subheading">Only the best!</span>
+            <h1>Food Fights!</h1>
+            <span class="subheading">ONLY THE BEST</span>
           </div>
         </div>
       </div>
@@ -87,32 +87,6 @@
 
   <!-- Main Content -->
   <div class="container">
-    <!--<div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <h2>Recent Posts</h2>
-        <div class="post-preview">
-          !--<a href="">--
-            <h2 class="post-title">
-              Tasty ribs I made the other day...
-            </h2>
-            <div style="width: 100%; padding-top: 100%; position: relative; background-color: gray;">
-            </div>
-            <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
-            </h3>
-          !--</a>--
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-        <hr>
-        <hr>
-        !-- Pager --
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-      </div>
-    </div>-->
 
     <!-- Post thumbnails go here -->
     <div class="posts-header" style="display: flex; justify-content: center;">
@@ -268,7 +242,7 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">Load More Posts</button>
+    <button id="loadMorePostsBtn" type="button" class="btn btn-secondary btn-lg btn-block">Load More Posts</button>
   </div>
 
   <hr>
@@ -310,6 +284,11 @@
     </div>
   </footer>
 
+  <!--=============================-->
+  <!--=============================-->
+
+  <!-- LOGIN / REGISTER / CREATE POST -->
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -331,88 +310,6 @@
     </div>
   </div>
   <!-- Modal End -->
-
-  <!-- Large Modal -->
-  <div class="modal fade" id="postDetailsModal"  tabindex="-1" role="dialog" aria-labelledby="postDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="postsModalTitle">Modal Template</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <!-- Post Details Go Here -->
-          <h3>Test Content</h3>
-          <img id="postDetailsModalImg" class="img-fluid" src="../static/imgs/portfolio/s3-test-img-1.jpeg">
-          <div class="container py-2">
-            <div class="row">
-                <div class="comments col-md-9" id="comments">
-                    <h3 class="mb-4 font-weight-light">Comments</h3>
-                    <!-- comment -->
-                    <div class="comment mb-2 row">
-                        <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-                            <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m103.jpg" alt="avatar"></a>
-                        </div>
-                        <div class="comment-content col-md-11 col-sm-10">
-                            <h6 class="small comment-meta"><a href="#">admin</a> Today, 2:38</h6>
-                            <div class="comment-body">
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <a href>http://wwwwww.com</a> tempoua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. <br>
-                                    <a href="" class="text-right small"><i class="ion-reply"></i> Reply</a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- reply is indented -->
-                        <div class="comment-reply col-md-11 offset-md-1 col-sm-10 offset-sm-2">
-                            <div class="row">
-                                <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-                                    <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m101.jpg" alt="avatar"></a>
-                                </div>
-                                <div class="comment-content col-md-11 col-sm-10 col-12">
-                                    <h6 class="small comment-meta"><a href="#">phildownney</a> Today, 12:31</h6>
-                                    <div class="comment-body">
-                                        <p>Really?? Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat. <br>
-                                            <a href="" class="text-right small"><i class="ion-reply"></i> Reply</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /reply is indented -->
-                    </div>
-                    <!-- /comment -->
-                    <!-- comment -->
-                    <div class="comment mb-2 row">
-                        <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-                            <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/w102.jpg" alt="avatar"></a>
-                        </div>
-                        <div class="comment-content col-md-11 col-sm-10">
-                            <h6 class="small comment-meta"><a href="#">maslarino</a> Yesterday, 5:03 PM</h6>
-                            <div class="comment-body">
-                                <p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. <br>
-                                    <a href="" class="text-right small"><i class="ion-reply"></i> Reply</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /comment -->
-                    <div class="row pt-2">
-                        <div class="col-12">
-                            <a href="" class="btn btn-sm btn-primary">Add a Comment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Large Modal End -->
 
   <!-- Login Form Template -->
   <template id="loginForm">
@@ -490,33 +387,163 @@
 
   <!-- Create Post Template -->
   <template id="createPostForm">
-    <form class="needs-validation" novalidate>
+    <form action="/posts/add_post" method ="POST" class="needs-validation" novalidate>
       <div class="form-group">
-        <label for="postTitleInput">Post Title</label>
-        <input type="text" class="form-control" id="postTitleInput" placeholder="Post Title">
+        <label for="post_title">Post Title</label>
+        <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Post Title">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlFile1">File input</label>
-        <input type="file" class="form-control-file" id="fileInput">
+        <label for="post_id">Post ID</label>
+        <input type="number" class="form-control" id="post_id" name="post_id" placeholder="">
       </div>
       <div class="form-group">
-        <label for="postCaptionInput">Post Caption</label>
-        <textarea class="form-control" id="postCaptionInput" rows="3"></textarea>
+        <label for="post_url">File input</label>
+        <input type="file" class="form-control-file" id="post_url" name="post_url">
       </div>
       <div class="form-group">
-        <label for="createPostAuthorInput">Author</label>
-        <input id="createPostAuthorInput" class="form-control" type="text" placeholder="" readonly>
+        <label for="post_text">Post Caption</label>
+        <textarea class="form-control" id="post_text" name="post_text" rows="3"></textarea>
       </div>
+      <div class="form-group">
+        <label for="post_community">Post Community</label>
+        <textarea class="form-control" id="post_community" name="post_community" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="post_date">Date</label>
+        <input id="post_date" name="post_date" class="form-control" type="text" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="post_user_name">Author</label>
+        <input id="post_user_name" name="post_user_name" class="form-control" type="text" placeholder="">
+      </div>
+      <input type="submit" value="Submit">
+      
     </form>
   </template>
   <!-- Create Post Template End -->
 
+  <!--=============================-->
+  <!--=============================-->
+
+  <!-- VIEW POST / COMMENTS / REPLIES -->
+
+  <!-- View Post Modal -->
+  <div class="modal fade" id="postDetailsModal"  tabindex="-1" role="dialog" aria-labelledby="postDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header-container">
+            <h3 class="modal-title font-italic" id="postsModalTitle">Modal Template</h3>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Post Details Go Here -->
+          <h3 class="font-weight-light pb-2" id="postsModalCaption">Post Content</h3>
+          <h6 class="pb-2" id="postsModalAuthor">[ username@email.com ]</h6>
+          <img id="postDetailsModalImg" class="img-fluid" src="">
+          <div class="container py-2 mb-0">
+            <div class="row">
+                <div class="comments col-md mt-4 mb-0" id="comments">
+                  <!-- /comment -->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <form id="postNewCommentForm" novalidate>
+                        <div class="form-group">
+                          <h3 style="text-align: center;">Share your thoughts!</h3>
+                          <textarea class="form-control mb-1" id="addCommentTxt" rows="4" required></textarea>
+                          <div class="alert alert-danger comment-validation" role="alert">
+                            Invalid Input
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <button type="button" class="btn btn-primary btn-block" id="addCommentBtn">Add Comment</a>
+                        </div>
+                      </form>
+                      <div class="comment-login">
+                        <button id="commentLoginBtn" class="btn btn-primary btn-block" data-toggle="modal" data-target="#postDetailsModal">Login To Comment</button>
+                      </div>
+                    </div>
+                  </div>
+                  <h3 class="mb-4 ml-4 comments-header">Comments</h3>
+                  <div class="pt-2" id="commentsContainer">
+                    
+                  </div>
 
 
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- View Post Modal End -->
 
+  <!-- Reply Form Template -->
+  <template id="addCommentReplyFormTemp">
+    <div class="comment-reply-form pt-2">
+      <div class="form-group">
+        <textarea class="form-control mb-1" id="addCommentReplyTxt" rows="3" required></textarea>
+        <div class="alert alert-danger comment-validation" role="alert">
+          Invalid Input
+        </div>
+      </div>
+      <div class="form-group reply-form-btns-container">
+        <button type="button" class="btn btn-primary mr-2" id="addReplyBtn">Add Comment</a>
+        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</a>
+      </div>
+    </div>
+  </template>
+  <!-- Reply Form Template End -->
 
+  <!-- Comment Template -->
+  <template id="commentTemp">
+    <div class="comment mb-5 row">
+      <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+          <a href=""><img class="mx-auto rounded-circle img-fluid" src="https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/profile-placeholder.png" alt="avatar"></a>
+      </div>
+      <div class="comment-content col-md-11 col-sm-10 pb-4">
+          <h6 class="small comment-meta"><a class="comment-author pr-3" href="#">[username here]</a><span class="comment-date">[post_date]</span></h6>
+          <div class="comment-body">
+              <p class="comment-body-content mb-2">
+                [comment text goes here] <br>
+                
+              </p>
+              <button type="button" class="btn btn-primary btn-sm reply-btn">Reply</button>
+          </div>
+      </div>
+      <div class="replies-container">
 
+      </div>
+  </div>
+  </template>
+  <!-- Comment Template End -->
 
+  <!-- Reply Template -->
+  <template id="replyTemplate">
+    <div class="comment-reply col-md-11 offset-md-1 col-sm-10 offset-sm-2 pt-4 pb-4">
+      <div class="row">
+        <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+          <a href=""><img class="mx-auto rounded-circle img-fluid" src="https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/profile-placeholder.png" alt="avatar"></a>
+        </div>
+        <div class="comment-content col-md-11 col-sm-10 col-12">
+          <h6 class="small comment-meta"><a class="reply-author pr-3" href="#">[username here]</a><span class="reply-date">[reply_date]</span></h6>
+          <div class="reply-comment-body">
+            <p>[comment text goes here] <br>
+              <!--<a href="" class="text-right small"><i class="ion-reply"></i> Reply</a>-->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!-- Reply Template End -->
 
   <!-- Bootstrap core JavaScript -->
   <!--<script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
