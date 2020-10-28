@@ -15,8 +15,8 @@ def hello_world():
 
   # Let's use Amazon S3
   s3 = boto3.resource('s3',
-         aws_access_key_id='AKIA274WOECWYA2IANEC',
-         aws_secret_access_key= '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')
+         aws_access_key_id='',
+         aws_secret_access_key= '')
 
   all_posts = query_db('SELECT * FROM posts;')
   all_comments= query_db('SELECT * FROM comments;')
