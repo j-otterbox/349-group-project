@@ -4,5 +4,5 @@ window._config = {
     region: "us-west-2",
     clientId: "5gh7abr5rsfdsu3mdi7ftm8qq1"
   },
-  user: "none"
+  user: "no-user"
 };

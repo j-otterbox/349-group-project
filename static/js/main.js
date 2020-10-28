@@ -412,31 +412,39 @@ for (var post of posts) {
     postsModalCaption.innerText = dummyPostData[index].postCaption;
     // set the author
     postsModalAuthor.innerText = `By: ${dummyPostData[index].postAuthor}`;
-
-
   });
 }
 
 // handles loading the data for a particular post preview to the modal
 function loadPostDetailData(index) {
-  console.log('hello from loadPostData');
 
   // clear the modal of the comments from prev post
   postCommentsContainer.textContent = '';
 
+  // create the comments + replies for this particular post
   for (var comment of dummyPostData[index].comments) {
     
     // clone the template and append it to modal body
     var commentTemplate = document.getElementById("commentTemp");
     var commentClone = commentTemplate.content.cloneNode(true);
+    // boolean check for session status
+    var isSessionValid = getSessionStatus();
 
     commentClone.querySelector('.comment-body-content').innerText = comment.content;
     commentClone.querySelector('.comment-author').innerText = comment.author;
     commentClone.querySelector('.comment-date').innerText = comment.date;
-    commentClone.querySelector('.reply-btn').addEventListener('click', function() {
-      createReplyForm(this);
-    });
-    
+    // hide or show reply btn based on user session status
+    if(isSessionValid) {
+      // add the reply functionality to the button
+      commentClone.querySelector('.reply-btn').addEventListener('click', function() {
+        createReplyForm(this);
+      });
+    }
+    else {
+      // hide the reply button until user logs in
+      commentClone.querySelector('.reply-btn').style.display = "none";
+    }
+    // append the comment template to the container
     postCommentsContainer.append(commentClone);  
   }
 }
@@ -493,6 +501,7 @@ addCommentBtn.addEventListener('click', function() {
 
 // handles toggling of the reply form in the comments section
 function createReplyForm(replyBtnParam) {
+
   // remove any open comment reply forms
   $('.comment-reply-form').remove();
   // make the reply btn visible again
@@ -565,6 +574,42 @@ function createReplyForm(replyBtnParam) {
   $(replyBtnParam).parents()[1].append(addCommentReplyFormClone);
   // hide the reply button on the comment that is being replied to
   $(replyBtnParam)[0].style.display = "none";
+}
+
+// returns a boolean value of the current sessions status
+function getSessionStatus() {
+
+  var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+  var cognitoUser = userPool.getCurrentUser();
+  // boolean check for later
+  var isSessionValid;
+
+  // determine if the sessions is valid
+  if(cognitoUser != null) {
+    cognitoUser.getSession(function(err, session) {
+      if (err) {
+        alert(err);
+        return;
+      }
+
+      // if the session is valid...
+      if(session.isValid()) {
+        //console.log('our current session is valid');
+        isSessionValid = true;
+      }
+      else {
+        //console.log('our current session is NOT valid');
+        isSessionValid = false;
+      }
+    });
+  }
+  // there is no current user
+  else {
+    //console.log('there is NO cognito user');
+    isSessionValid = false;
+  }
+
+  return isSessionValid;
 }
 
 // =================================================== //
@@ -713,8 +758,8 @@ function processLoginFormData(username, password) {
   // try to login in the user, notify if there's an error
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (result) {
-      var accessToken = result.getAccessToken().getJwtToken();
-      console.log(accessToken);	
+      //var accessToken = result.getAccessToken().getJwtToken();
+      //console.log(accessToken);	
       loginSuccess();
     },
     onFailure: function(err) {
