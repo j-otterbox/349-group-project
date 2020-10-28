@@ -15,8 +15,8 @@ def hello_world():
 
   # Let's use Amazon S3
   s3 = boto3.resource('s3',
-         aws_access_key_id='',
-         aws_secret_access_key= '')
+         aws_access_key_id='AKIA274WOECWYA2IANEC',
+         aws_secret_access_key= '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')
 
   all_posts = query_db('SELECT * FROM posts;')
   all_comments= query_db('SELECT * FROM comments;')
@@ -108,7 +108,7 @@ def add_post():
 		post_title = request.form['post_title']
 		post_text = request.form['post_text']
 		post_community = request.form['post_community']
-		post_url = request.form['post_url']
+		post_url = 'https://349-food-fights.s3-us-west-2.amazonaws.com/' + request.form['post_url']
 		post_user_name = request.form['post_user_name']
 		post_date = request.form['post_date']
 		# checks to see if post with this ID already exists
