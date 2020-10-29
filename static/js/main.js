@@ -16,7 +16,8 @@ var cognitoUser = userPool.getCurrentUser();
 // non-login related things
 var loadMorePostsBtn = document.getElementById('loadMorePostsBtn');
 var createPostBtn = document.getElementById('createPostBtn');
-var posts = document.getElementsByClassName('post-preview');
+//var posts = document.getElementsByClassName('post-preview');
+var postPreviewsGrid = document.getElementById('postPreviewsGrid');
 var postDeetsModalImg = document.getElementById('postDetailsModalImg');
 var postsModalTitle = document.getElementById('postsModalTitle');
 var postCommentsContainer = document.getElementById('commentsContainer');
@@ -28,315 +29,6 @@ var addCommentBtn = document.getElementById('addCommentBtn');
 var addCommentTxt = document.getElementById('addCommentTxt');
 var commentLoginBtn = document.getElementById('commentLoginBtn');
 
-//var d = new Date(); 
-//console.log(d);  // for now
-//d.getHours(); // => 9
-//d.getMinutes(); // =>  30
-//d.getSeconds(); // => 51
-
-
-// data for testing only - remove later
-dummyPostData = [
-  {
-    postAuthor: "rick james",
-    postTitle: "Who doesn't love ribs!?",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/beef-ribs.jpg",
-    postCaption: "Honestly my ribs are the best. If you think you can do better, you can't",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM",
-        replies: [
-          {
-            author: "REPLY GUY",
-            content: "REPLY TEST",
-            date: "January 1, 12:00 AM"
-          },
-          {
-            author: "REPLY GUY",
-            content: "REPLY TEST",
-            date: "January 1, 12:00 AM"
-          },
-          {
-            author: "REPLY GUY",
-            content: "REPLY TEST",
-            date: "January 1, 12:00 AM"
-          }
-        ]
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "waka flocka",
-    postTitle: "Simple but egg-celent...",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/egg-on-toast.jpg",
-    postCaption: "I love bread, and I love eggs. Simple but tasty breakfast!",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "nate dogg",
-    postTitle: "Breakfast: hands down the best meal of the day.",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/french-toast.jpg",
-    postCaption: "French toast is a classic that is so tasty! Yum!",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "asap rocky",
-    postTitle: "Homemade Pizza...",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/pizza.jpg",
-    postCaption: "Just kidding I didn't make this, I suck at cooking",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "gucci man",
-    postTitle: "Tacos!? Yes Please!",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/tacos.jpg",
-    postCaption: "Nothing hits the spot quite like street tacos.",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "50cent",
-    postTitle: "Classic Burger and Fries",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/burger-and-fries.jpg",
-    postCaption: "Nothing beats a burger and fries after a day at the beach!",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "dr. dre",
-    postTitle: "English Breakfast",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/english-breakfast.jpg",
-    postCaption: "Now this is one hearty meal, and it tastes as good as it looks!",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "snoop dogg",
-    postTitle: "Cheese? Yes, Please!",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/cheese-and-crackers.jpg",
-    postCaption: "I love cheese, and wine, cause I'm extra and I know it.",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "tupac",
-    postTitle: "Meatballs...",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/meatballs.jpg",
-    postCaption: "Who knew little spheres of meat could be so tasty?",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "biggie smalls",
-    postTitle: "I have no idea what this is",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/seafood.jpg",
-    postCaption: "Honestly, it's anyones guess, I thought it was shrimp, maybe chicken?",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "xzibit",
-    postTitle: "I love pies.",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/pie.jpg",
-    postCaption: "However, my body disagrees. Maybe I'm allergic to something?",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-  {
-    postAuthor: "future",
-    postTitle: "A little love for the veggies...",
-    url: "https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/big-salad.jpg",
-    postCaption: "Just kidding, vegetables are awful and should be hunted down and destroyed.",
-    comments: [
-      {
-        author: "some guy",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "January 1, 12:00 AM"
-      },
-      {
-        author: "jane doe",
-        content: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.",
-        date: "January 2, 12:00 AM"
-      },
-      {
-        author: "john doe",
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-        date: "January 3, 12:00 AM"
-      } 
-    ]
-  },
-];
-
-// TO DO:
-// this function will create the post previews for the grid
-function renderPostPreviews() {
-  console.log('click render-post-previews');
-}
 
 // handles everything that needs to be done on page load
 window.onload = function() {
@@ -388,65 +80,111 @@ window.onload = function() {
 
   // then get post previews onto page
   renderPostPreviews();
+
+
+
 };
 
-// adds listeners to the previews already on the page
-// will need to move this around later...
-for (var post of posts) {
+// this function will create the post previews for the grid
+function renderPostPreviews() {
+  console.log('rendering-post-previews');
+ 
+  // returns promise
+  posts_promise = getAllPosts();
+  // access the data within the promise
+  posts_promise.then(function(posts) {
 
-  post.addEventListener('click', function() {
-    
-    // select the img from preview that was clicked
-    postPreviewImg = this.querySelector(".post-preview-img");
-    // set the posts modal image src to the selected preview's src
-    postDeetsModalImg.setAttribute('src', postPreviewImg.src);
-    // get the index of the chosen item for json array access
-    index = $(this).parent().index();
+    for(post of posts) {
 
-    // this creates the comments and adds their functionality, mainly REPLY
-    loadPostDetailData(index);
+      // clone the preview template and append it to modal body
+      var postPreviewTemplate = document.getElementById("postPreviewTemp");
+      var postPreviewClone = postPreviewTemplate.content.cloneNode(true);
+      // construct the url for the stock imgs
+      var baseUrl = "https://349-food-fights.s3-us-west-2.amazonaws.com";
+      var src = baseUrl + post.imgPath;
+      // set the img src
+      postPreviewClone.querySelector('.post-preview-img').setAttribute('src', src);
+      // secretly hide post_id
+      postPreviewClone.querySelector('.post-id').innerText = post.id;
+      // append to the preview container
+      postPreviewsGrid.append(postPreviewClone);
+    }
 
-    // set the title of the modal
-    postsModalTitle.innerText = dummyPostData[index].postTitle;
-    // set the caption as well
-    postsModalCaption.innerText = dummyPostData[index].postCaption;
-    // set the author
-    postsModalAuthor.innerText = `By: ${dummyPostData[index].postAuthor}`;
+    $('.post-preview').click(function() {
+
+      // select the img from preview that was clicked
+      postPreviewImg = this.querySelector(".post-preview-img");
+      // set the posts modal image src to the selected preview's src
+      postDeetsModalImg.setAttribute('src', postPreviewImg.src);
+      // get the index of the chosen item for json array access
+      // add 1 to account for offset
+
+      // if you need the place in the DOM: $(this).parent().index()
+      
+      // gets the id from the hidden DOM element
+      index = ($(this).parent().find('.post-id').text());
+  
+      // this creates the comments and adds their functionality, mainly REPLY
+      loadPostDetailData(index);
+    });
   });
 }
 
 // handles loading the data for a particular post preview to the modal
 function loadPostDetailData(index) {
 
+  //console.log(index);
+
   // clear the modal of the comments from prev post
   postCommentsContainer.textContent = '';
 
-  // create the comments + replies for this particular post
-  for (var comment of dummyPostData[index].comments) {
-    
-    // clone the template and append it to modal body
-    var commentTemplate = document.getElementById("commentTemp");
-    var commentClone = commentTemplate.content.cloneNode(true);
-    // boolean check for session status
-    var isSessionValid = getSessionStatus();
+  post = getPostById(index);
+  post.then(function(result){
+    //console.log(result);
+    post_obj = result[0];
 
-    commentClone.querySelector('.comment-body-content').innerText = comment.content;
-    commentClone.querySelector('.comment-author').innerText = comment.author;
-    commentClone.querySelector('.comment-date').innerText = comment.date;
-    // hide or show reply btn based on user session status
-    if(isSessionValid) {
-      // add the reply functionality to the button
-      commentClone.querySelector('.reply-btn').addEventListener('click', function() {
-        createReplyForm(this);
-      });
-    }
-    else {
-      // hide the reply button until user logs in
-      commentClone.querySelector('.reply-btn').style.display = "none";
-    }
-    // append the comment template to the container
-    postCommentsContainer.append(commentClone);  
-  }
+    // set the title of the post
+    postsModalTitle.innerText = post_obj.title;
+    // set the caption
+    postsModalCaption.innerText = post_obj.caption;
+    // set the author
+    postsModalAuthor.innerText = `By: ${post_obj.author}`;
+    // set the id for posting comments
+    $('#post-id').text(post_obj.id);
+
+  });
+
+  comments = getPostCommentsById(index);
+  comments.then(function(result) {
+    //console.log(result);
+    comments_obj = result;
+
+    for (var comment of comments_obj) {
+      
+      // clone the template and append it to modal body
+      var commentTemplate = document.getElementById("commentTemp");
+      var commentClone = commentTemplate.content.cloneNode(true);
+      // boolean check for session status
+      var isSessionValid = getSessionStatus();
+
+      commentClone.querySelector('.comment-body-content').innerText = comment.content;
+      commentClone.querySelector('.comment-author').innerText = comment.author;
+      commentClone.querySelector('.comment-date').innerText = comment.createDate;
+      // hide or show reply btn based on user session status
+      if(isSessionValid) {
+        // add the reply functionality to the button
+        commentClone.querySelector('.reply-btn').addEventListener('click', function() {
+          createReplyForm(this);
+        });
+      }
+      else {
+        // hide the reply button until user logs in
+        commentClone.querySelector('.reply-btn').style.display = "none";
+      }
+      // append the comment template to the container
+      postCommentsContainer.append(commentClone); 
+    }    
+  });
 }
 
 // handles loading more post previews with the template
@@ -464,19 +202,22 @@ addCommentBtn.addEventListener('click', function() {
 
   // check for no input
   if(newComment === "") {
-    // do not proceed if there is no input
-    console.log('no input detected');
+    //console.log('no input detected');
     // give feed back to user, make alert visible
     addCommentTxt.style.borderColor = "#dc3545";
     addCommentFeedback.style.display = "block";
   }
   // proceed if there is any input
   else {
+    // get the parent id
+    var parent_id = $('#post-id').text();
     // get the username of the current user
     var newAuthor = _config.user;
-    // fake date, may remve this idk
+    // fake date
     var newDate = "January 1, 2020 - 12:00AM";
-  
+
+    postNewComment(parent_id, newAuthor, newComment);
+
     // clone the template and append it to modal body
     var commentTemplate = document.getElementById("commentTemp");
     var commentClone = commentTemplate.content.cloneNode(true);
@@ -964,6 +705,8 @@ function processRegisterFormData(userEmail, password) {
 function registerSuccess(result) {
   
   var cognitoUser = result.user;
+  // insert the user into the DB on successful reg.
+  insertUserIntoDb(cognitoUser);
 
   // remove previous content
   modalBody.textContent = '';
@@ -1048,8 +791,129 @@ createPostBtn.addEventListener('click', function() {
   var createPostClone = createPostFormTemplate.content.cloneNode(true);
   modalBody.append(createPostClone);
 
-  var authorInput = document.getElementById('createPostAuthorInput');
+  addValidation();
 
-  authorInput.value = _config.user;
+  var createPostBtn = document.getElementById('createPostFormBtn');
+  var postAuthorInput = document.getElementById('postAuthorInput');
+  postAuthorInput.value = _config.user;
 
+  // add create post submit listener
+  createPostBtn.addEventListener('click', function() {
+    // get the values from the input
+    var postTitle = document.getElementById('postTitleInput').value;
+    var postCaption = document.getElementById('postCaptionInput').value;
+    // check validity
+    if(postTitle && postCaption) {
+      console.log('form is valid');
+    }
+    else {
+      console.log('form is not valid');
+    }
+  });
 });
+
+// ========================================================= //
+// =====[ API METHODS ]===================================== //
+
+// yes, we know this is bad practice, but we were short on time
+
+function insertUserIntoDb(username) {
+
+  // insert into users
+  fetch('/users', {
+    // Declare what type of data we're sending
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    // Specify the method
+    method: 'POST',
+    // A JSON payload
+    body: JSON.stringify({
+        "id": "null",
+        "username": username,
+        "createDate": "CURRENT_TIMESTAMP"
+    })
+  }).then(function(response){ // At this point, Flask has printed our JSON
+    return response.json();
+  }).then(function (json) {
+
+    console.log('POST response: ');
+    // Should be 'OK' if everything was successful
+    console.log(json);
+  });
+}
+
+function insertNewPostIntoDb(author, title, caption) {
+
+  // insert into posts
+  fetch('/posts', {
+  // Declare what type of data we're sending
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  // Specify the method
+  method: 'POST',
+  // A JSON payload
+  body: JSON.stringify({
+      "id": 2,
+      "author": author,
+      "title": title,
+      "caption": caption
+    })
+  }).then(function (response) { // At this point, Flask has printed our JSON
+    return response.json();
+  }).then(function (json) {
+
+    console.log('POST response: ');
+
+    // Should be 'OK' if everything was successful
+    console.log(json);
+  });
+
+}
+
+// wherever this is called, it only returns a promise
+// theres an extra step to access the data within
+async function getAllPosts() {
+  var response = await fetch('/posts/all');
+  var posts_data = await response.json();
+
+  return posts_data;
+}
+
+// wherever this is called, it only returns a promise
+// theres an extra step to access the data within
+async function getPostById(id) {
+  var response = await fetch('/posts/' + id);
+  var post_data = await response.json();
+
+  return post_data;
+}
+
+async function postNewComment(parent_id, author, content) {
+  var response = await fetch('/comments', {
+    // Declare what type of data we're sending
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      "parent_id": parent_id,
+      "author": author,
+      "content": content
+    })
+  });
+  var json = await response.json();
+  console.log(json);
+}
+
+// wherever this is called, it only returns a promise
+// theres an extra step to access the data within
+async function getPostCommentsById(id) {
+  var response = await fetch('/posts/' + id + '/comments');
+  var comment_data = await response.json();
+
+  return comment_data;
+}
