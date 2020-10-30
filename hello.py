@@ -1,8 +1,12 @@
 import sqlite3
-from flask import Flask, jsonify, request, render_template, g
+import boto3
+from config import S3_KEY, S3_SECRET, S3_BUCKET
+from flask import Flask, jsonify, request, redirect, render_template, g
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config.from_envvar('APP_CONFIG')
+app.config.from_object('config')
+app.config.from_envvar('APP_CONFIG')  
 DATABASE = 'app.db'
 
 #==================================#
@@ -68,55 +72,6 @@ def status_201(data):
 @app.route('/')
 def getHomePage():
   return render_template('index.html', name='home')
-
-# post into users
-@app.route('/users', methods=['POST'])
-def addNewUser():
-  if request.method == 'POST':
-
-    req_data = request.get_json()
-
-    id = req_data.get('id')
-    username = req_data.get('username')
-    createDate = req_data.get('createDate')
-
-    response = {
-      "id": id,
-      "username": username,
-      "createDate": createDate
-    }
-    #query_string = "INSERT INTO users VALUES (null, 'test@gmail.com', CURRENT_TIMESTAMP)"
-
-    return jsonify(response)
-  else:
-    response = {'message': 'idk 404!'}
-    return jsonify(response)
-
-# query or insert into posts
-@app.route('/posts', methods=['GET', 'POST'])
-def queryPosts():
-  if request.method == 'POST':
-
-    query_string = "insert into posts values (null, 'jasonotter17@gmail.com', 'test post title', 'test post caption', 'img.jpg', CURRENT_TIMESTAMP)"
-
-    # get bulk data from request
-    req_data = request.get_json()
-
-    id = req_data.get('id')
-    title = req_data.get('title')
-    caption = req_data.get('caption')
-
-    response = {
-      "id": id,
-      "title": title,
-      "caption": caption
-    }
-
-    return jsonify(response)
-  else:
-    #post_id = request.args['post_id']
-    response = {'message': 'query posts db'}
-    return jsonify(response)
 
 # get all posts
 @app.route('/posts/all', methods=['GET'])
@@ -198,7 +153,6 @@ def postNewComment():
 
     return status_201(response)
 
-
 # get all comments where post_id = ?
 @app.route('/posts/<int:post_id>/comments', methods=['GET'])
 def getCommentsById(post_id):
@@ -217,6 +171,39 @@ def getCommentsById(post_id):
     results.append(item)
 
   return jsonify(results)
+
+#upload image
+@app.route('/upload', methods=['POST'])
+def upload_file():
+
+  # vars available S3_KEY, S3_SECRET, S3_BUCKET
+  s3 = boto3.client('s3', aws_access_key_id=S3_KEY, aws_secret_access_key= S3_SECRET)
+ 
+  if request.method == 'POST':
+    img = request.files['user_file']
+    if img:
+      filename = secure_filename(img.filename)
+      img.save(filename)
+
+      s3.upload_file(
+          Bucket = S3_BUCKET,
+          Filename=filename,
+          Key = filename
+      )
+      
+    postTitle = request.form['postTitle']
+    postUrl = "/" + request.files['user_file'].filename
+    postCaption = request.form['postCaption']  
+    postAuthor = request.form['postAuthor']
+
+    response = [{
+      "post title": postTitle,
+      "post url": postUrl,
+      "post caption": postCaption,
+      "post author": postAuthor
+    }]
+
+    return jsonify(response)
 
 # handles any routes other than the ones specified above
 @app.errorhandler(404)	

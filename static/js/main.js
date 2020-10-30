@@ -798,7 +798,7 @@ createPostBtn.addEventListener('click', function() {
   postAuthorInput.value = _config.user;
 
   // add create post submit listener
-  createPostBtn.addEventListener('click', function() {
+  /*createPostBtn.addEventListener('click', function() {
     // get the values from the input
     var postTitle = document.getElementById('postTitleInput').value;
     var postCaption = document.getElementById('postCaptionInput').value;
@@ -809,7 +809,7 @@ createPostBtn.addEventListener('click', function() {
     else {
       console.log('form is not valid');
     }
-  });
+  });*/
 });
 
 // ========================================================= //
@@ -842,36 +842,6 @@ function insertUserIntoDb(username) {
     // Should be 'OK' if everything was successful
     console.log(json);
   });
-}
-
-function insertNewPostIntoDb(author, title, caption) {
-
-  // insert into posts
-  fetch('/posts', {
-  // Declare what type of data we're sending
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  },
-  // Specify the method
-  method: 'POST',
-  // A JSON payload
-  body: JSON.stringify({
-      "id": 2,
-      "author": author,
-      "title": title,
-      "caption": caption
-    })
-  }).then(function (response) { // At this point, Flask has printed our JSON
-    return response.json();
-  }).then(function (json) {
-
-    console.log('POST response: ');
-
-    // Should be 'OK' if everything was successful
-    console.log(json);
-  });
-
 }
 
 // wherever this is called, it only returns a promise

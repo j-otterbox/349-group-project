@@ -1,3 +1,4 @@
+-- $ sqlite3 app.db < schema.sql
 PRAGMA foreign_keys = ON;
 
 BEGIN TRANSACTION;
