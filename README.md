@@ -8,7 +8,6 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get -y install python3-pip
 pip3 install --user Flask-API python-dotenv
-sudo apt install curl
 flask init
 flask run
 ```
