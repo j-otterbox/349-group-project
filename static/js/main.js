@@ -1,5 +1,3 @@
-console.log('main.js running');
-
 var loginBtn = document.getElementById('loginBtn');
 var modalBody = document.getElementsByClassName("modal-body")[0];
 var modalTitle = document.getElementById('modalTitle');
@@ -40,7 +38,7 @@ window.onload = function() {
         alert(err);
         return;
       }
-      console.log('session validity: ' + session.isValid());
+      //console.log('session validity: ' + session.isValid());
 
       // get the profile info (username)
       cognitoUser.getUserAttributes(function(err, result) {
@@ -52,7 +50,6 @@ window.onload = function() {
         // if the session is valid...
         //console.log(result[2].Value);
         if(session.isValid()) {
-          console.log('hello');
 
           // hide the login button
           loginBtn.style.display = "none";
@@ -80,14 +77,10 @@ window.onload = function() {
 
   // then get post previews onto page
   renderPostPreviews();
-
-
-
 };
 
 // this function will create the post previews for the grid
 function renderPostPreviews() {
-  console.log('rendering-post-previews');
  
   // returns promise
   posts_promise = getAllPosts();
@@ -189,7 +182,7 @@ function loadPostDetailData(index) {
 
 // handles loading more post previews with the template
 loadMorePostsBtn.addEventListener('click', function() {
-  console.log('hello from loadMorePosts');
+  
 });
 
 // handles adding a new comment, NOT a reply

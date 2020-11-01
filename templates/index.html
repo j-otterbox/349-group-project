@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
   <title>Food Fights!</title>
-
   <!-- Bootstrap core CSS -->
-  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='/vendor/bootstrap/css/bootstrap.min.css') }}">
-
+  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='/styles/bootstrap.min.css') }}">
   <!-- Custom fonts for this template -->
-  <!--<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
-  <!--<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
   <!-- Custom styles for this template -->
-  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/clean-blog.css') }}">
-
+  <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/food-fights.css') }}">
 </head>
-
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -34,22 +21,9 @@
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
-        <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <!--<li class="nav-item">
-            <a class="nav-link" href="">Home</a>
-          </li>-->
-          <!--<li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>-->
           <li class="nav-item">
             <a class="nav-link" id="loginBtn" href="" data-toggle="modal" data-target="#exampleModal">Login</a>
           </li>
@@ -89,7 +63,7 @@
   <div class="container">
 
     <!-- Post thumbnails go here -->
-    <div class="posts-header" style="display: flex; justify-content: center;">
+    <div class="posts-header">
       <div class="posts-header-content">
         <h2>Recent Posts</h2>
         <button id="createPostBtn" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Create New Post</button>
@@ -97,19 +71,7 @@
       
     </div>
     <div id="postPreviewsGrid" class="row">
-      <!-- Portfolio Item 1-->
-      <!--<div class="col-md-6 col-lg-4 mb-5">
-        <div class="post-preview hvr-grow mx-auto" data-toggle="modal" data-target="#postDetailsModal">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-          </div>
-          <img class="img-fluid post-preview-img" src="https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/beef-ribs.jpg" alt="" />
-          <div class="overlay">-->
-            <!--<div class="text">test</div>-->
-          <!--</div>
-        </div>
-      </div>-->
-
+      <!-- Grid Items Go Here -->
     </div>
     <button id="loadMorePostsBtn" type="button" class="btn btn-secondary btn-lg btn-block">Load More Posts</button>
   </div>
@@ -121,33 +83,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Notorious PHP</p>
+          <p class="copyright text-muted">Crafted By: Notorious PHP</p>
         </div>
       </div>
     </div>
@@ -283,7 +219,7 @@
       </div>
       <div class="form-group">
         <label for="user_file">Upload Your File</label>
-        <input type="file" name="user_file" value="user_file">
+        <input type="file" name="user_file"  value="user_file" accept="image/x-png,image/gif,image/jpeg">
       </div>
       <div class="form-group">
         <label for="postCaptionInput">Post Caption</label>
@@ -325,7 +261,7 @@
           <div class="container py-2 mb-0">
             <div class="row">
                 <div class="comments col-md mt-4 mb-0" id="comments">
-                  <!-- /comment -->
+                  <!-- Add New Comment Form -->
                   <div class="row mb-4">
                     <div class="col-12">
                       <form id="postNewCommentForm" novalidate>
@@ -347,7 +283,7 @@
                   </div>
                   <h3 class="mb-4 ml-4 comments-header">Comments</h3>
                   <div class="pt-2" id="commentsContainer">
-                    
+                    <!-- Comments Go Here -->     
                   </div>
                 </div>
             </div>
@@ -381,13 +317,13 @@
 
   <!-- Comment Template -->
   <template id="commentTemp">
-    <div class="comment mb-5 row">
-      <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+    <div class="mb-5 row">
+      <div class="col-md-1 col-sm-2 text-center pr-1">
           <a href=""><img class="mx-auto rounded-circle img-fluid" src="https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/profile-placeholder.png" alt="avatar"></a>
       </div>
-      <div class="comment-content col-md-11 col-sm-10 pb-4">
-          <h6 class="small comment-meta"><a class="comment-author pr-3" href="#">[username here]</a><span class="comment-date">[post_date]</span></h6>
-          <div class="comment-body">
+      <div class="col-md-11 col-sm-10 pb-4">
+          <h6 class="small"><a class="comment-author pr-3" href="#">[username here]</a><span class="comment-date">[post_date]</span></h6>
+          <div>
               <p class="comment-body-content mb-2">
                 [comment text goes here] <br>
                 
@@ -404,16 +340,15 @@
 
   <!-- Reply Template -->
   <template id="replyTemplate">
-    <div class="comment-reply col-md-11 offset-md-1 col-sm-10 offset-sm-2 pt-4 pb-4">
+    <div class="col-md-11 offset-md-1 col-sm-10 offset-sm-2 pt-4 pb-4">
       <div class="row">
-        <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+        <div class="col-md-1 col-sm-2 text-center pr-1">
           <a href=""><img class="mx-auto rounded-circle img-fluid" src="https://349-food-fights.s3-us-west-2.amazonaws.com/stock-imgs/profile-placeholder.png" alt="avatar"></a>
         </div>
-        <div class="comment-content col-md-11 col-sm-10 col-12">
-          <h6 class="small comment-meta"><a class="reply-author pr-3" href="#">[username here]</a><span class="reply-date">[reply_date]</span></h6>
+        <div class="col-md-11 col-sm-10 col-12">
+          <h6 class="small"><a class="reply-author pr-3" href="#">[username here]</a><span class="reply-date">[reply_date]</span></h6>
           <div class="reply-comment-body">
             <p>[comment text goes here] <br>
-              <!--<a href="" class="text-right small"><i class="ion-reply"></i> Reply</a>-->
             </p>
           </div>
         </div>
@@ -422,29 +357,19 @@
   </template>
   <!-- Reply Template End -->
 
-  <!-- Bootstrap core JavaScript -->
-  <!--<script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>-->
-
-
   <!-- AWS Cognito -->
   <script src="../static/js/amazon-cognito-auth.min.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
   <script src="../static/js/amazon-cognito-identity.min.js"></script>
   <script src="../static/js/config.js"></script>
 
-
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <!--<script src="js/clean-blog.min.js"></script>-->
+  <!-- Custom Scripts -->
   <script src="{{ url_for('static',filename='js/main.js') }}"></script>
-
 </body>
 
 </html>
