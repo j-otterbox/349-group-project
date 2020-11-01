@@ -191,6 +191,7 @@ def upload_file():
 	postTitle = request.form['postTitle']
 	postCaption = request.form['postCaption']
 	postUrl = "/" + request.files['user_file'].filename
+	createDate = "CURRENT_TIMESTAMP"
 	  
 	
 
@@ -204,11 +205,12 @@ def upload_file():
 	input_args.append(postTitle)
 	input_args.append(postCaption)
 	input_args.append(postUrl)
+	input_args.append(createDate)
 	
 	
 
 			
-	query= "INSERT INTO posts(id, author, title, caption, imgPath, createDate) VALUES(NULL,?,?,?,?,NULL);"
+	query= "INSERT INTO posts(id, author, title, caption, imgPath, createDate) VALUES(NULL,?,?,?,?,?);"
 	conn = sqlite3.connect(DATABASE)
 	conn.execute(query, input_args)
 	conn.commit()
