@@ -11,19 +11,35 @@ pip3 install --user Flask-API python-dotenv
 flask init
 flask run
 ```
+## Environment Variables
+In order to upload photos make sure to export the following environment variables:
+export S3_BUCKET_NAME="349-food-fights"
+export S3_ACCESS_KEY="AKIA274WOECW4RTLVRN6"
+export S3_SECRET_ACCESS_KEY="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"
+
+AWS does not like when these values are hardcoded into the app code - account security issues.
 
 ## Accessing Application
 Go to browser and go to http://localhost:5000/
 
 ## Accessing posts
-Click on any post image to see post info and comments
+Recent posts will appear automatically.
+Click on any post image to see post info and comments.
 
-## Adding Comment
-Type out your comment and then click ‘Add Comment’ to publish a comment.
-* Only registered users can add a post
+## Registration/Login
+If you don't want to use the account below, you can create your own by clicking
+the register link on the login form. Once submitted, you will receive a verification email.
+You must verify your account before being able to login.
+
+## Adding New Posts
+* Only registered users that are logged in can post new content.
 * Login with email: jasonotter17@gmail.com
 * Password: Password1!
 * Click on ‘Create Post’
 * Fill out the post
 * Click ‘Submit’
 * You will be redirected when your post is added
+
+## Adding Comment
+Click on any post and you should see existing comments.
+Type out your comment in the form and then click ‘Add Comment’ to publish a comment.
