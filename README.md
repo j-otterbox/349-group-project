@@ -42,14 +42,14 @@ the register link on the login form. Once submitted, you will receive a verifica
 You must verify your account before being able to login.
 
 ## Adding New Posts
-* Only registered users that are logged in can post new content.
+Only registered users that are logged in can post new content.
 * Login with email: jasonotter17@gmail.com
 * Password: Password1!
 * Click on ‘Create Post’
-* Fill out the post
+* Fill out the form
 * Click ‘Submit’
 * You will be redirected when your post is added
 
-## Adding Comment
-Click on any post and you should see existing comments.
-Type out your comment in the form and then click ‘Add Comment’ to publish a comment.
+## Adding Comments
+* Click on any post and you should see existing comments.
+* Type out your comment in the form and then click ‘Add Comment’ to publish a comment.
