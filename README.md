@@ -17,7 +17,17 @@ In order to upload photos make sure to export the following environment variable
 * export S3_ACCESS_KEY="AKIA274WOECW4RTLVRN6"
 * export S3_SECRET_ACCESS_KEY="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"
 
-AWS does not like when these values are hardcoded into the app code - account security issues.
+AWS does not like when these values are hardcoded into the app code - account security issues
+
+## Before Starting the Server.
+Make sure to start up the database with the following command:
+```
+flask init
+```
+Then:
+```
+flask run
+```
 
 ## Accessing Application
 Go to browser and go to http://localhost:5000/
