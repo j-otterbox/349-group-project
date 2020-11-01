@@ -12,7 +12,7 @@ flask init
 flask run
 ```
 ## Environment Variables
-In order to upload photos make sure to export the following environment variables:
+In order to upload photos make sure to export the following environment variables from the command line:
 * export S3_BUCKET_NAME="349-food-fights"
 * export S3_ACCESS_KEY="AKIA274WOECW4RTLVRN6"
 * export S3_SECRET_ACCESS_KEY="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"
