@@ -17,7 +17,7 @@ In order to upload photos make sure to export the following environment variable
 * export S3_ACCESS_KEY="..."
 * export S3_SECRET_ACCESS_KEY="..."
 
-AWS does not like when these values are hardcoded into the app code - account security issues
+AWS does not like when these values are visible anywhere and will email me if they are - account security issues
 
 ## Before Starting the Server.
 Make sure to start up the database with the following command:
