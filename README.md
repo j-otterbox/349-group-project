@@ -11,6 +11,13 @@ pip3 install --user Flask-API python-dotenv
 flask init
 flask run
 ```
+
+## install boto3
+
+```
+pip install boto3
+```
+
 ## Environment Variables
 In order to upload photos make sure to export the following environment variables from the command line:
 * export S3_BUCKET_NAME="349-food-fights"
