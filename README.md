@@ -12,8 +12,7 @@ flask init
 flask run
 ```
 
-## install boto3
-
+## install boto3 - for uploading files
 ```
 pip install boto3
 ```
