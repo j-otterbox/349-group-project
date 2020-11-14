@@ -1,5 +1,7 @@
 # 349-group-project
 
+Group project reviews are in this repository, and in the Titanium Submission for Project 1
+
 ## Installation
 Make sure you have python3 installed on your machine
 
